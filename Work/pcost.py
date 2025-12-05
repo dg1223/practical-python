@@ -1,16 +1,21 @@
 # pcost.py
 #
-# Exercise 1.27
-with open('Data/portfolio.csv', 'rt') as f:
-    total = 0
-    counter = 0
+# Exercise 1.27, 1.30, 'Data/portfolio.csv'
 
-    for line in f:
-        if counter == 0:
-            counter += 1
-            continue
+def portfolio_cost(filename):
+    with open(filename, 'rt') as f:
+        total = 0
+        counter = 0
 
-        row = line.split(',')
-        total += float(row[2]) * int(row[1])
+        for line in f:
+            if counter == 0:
+                counter += 1
+                continue
 
-    print(f"Total cost: {total:.2f}")
+            row = line.split(',')
+            total += float(row[2]) * int(row[1])
+
+    return f"Total cost: {total:.2f}"
+
+if __name__ == "__main__":
+    print(portfolio_cost('Data/portfolio.csv'))
