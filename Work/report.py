@@ -29,7 +29,7 @@ def read_portfolio_dict(filename):
                 continue
 
             row = line.split(',')
-            
+
             share_dict['name'] = row[0]
             share_dict['shares'] = int(row[1])
             share_dict['price'] = float(row[2])
@@ -37,6 +37,22 @@ def read_portfolio_dict(filename):
 
     return portfolio
 
+def prices(filename):
+    with open(filename, 'rt') as f:
+        share_dict = {}
+        counter = 0
+
+        for line in f:
+            row = line.split(',')
+
+            try:
+                share_dict[row[0]] = float(row[1])
+            except IndexError:
+                pass
+
+    return share_dict
+
 if __name__ == "__main__":
     # print(read_portfolio('Data/portfolio.csv'))
-    print(read_portfolio_dict('Data/portfolio.csv'))
+    # print(read_portfolio_dict('Data/portfolio.csv'))
+    print(prices('Data/prices.csv'))
