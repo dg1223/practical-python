@@ -1,4 +1,5 @@
 class Address:
+    # constructor
     def __init__(self):
         self.name = ''
         self.address = ''
